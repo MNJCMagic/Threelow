@@ -45,7 +45,17 @@
 }
 
 -(void)holdDie:(NSNumber*)num {
-    [_heldDice addObject:num];
+    if ([self.heldDice containsObject:num]) {
+        [self.heldDice removeObject:num];
+    } else {
+        [self.heldDice addObject:num];
+    }
+    
+    
+//    for (NSNumber *n in self.heldDice) {
+//        if
+//    }
+//    [_heldDice addObject:num];
 }
 
 -(void)askHold {
@@ -53,7 +63,7 @@
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
     char inputChars[255];
-    NSLog(@"Which die or dice would you like to hold? Please separate by commas, or hit enter to re-roll.\n");
+    NSLog(@"Which die or dice would you like to hold/unhold? Please separate by commas, or hit enter to re-roll.\n");
     fgets(inputChars, 255, stdin);
     NSString *inputString = [NSString stringWithUTF8String:inputChars];
     NSCharacterSet *space = [NSCharacterSet whitespaceAndNewlineCharacterSet];
