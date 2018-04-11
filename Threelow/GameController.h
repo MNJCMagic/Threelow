@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSMutableSet *heldDice;
 
 -(void)rollDice;
--(void)holdDie;
+-(void)askHold;
+-(void)holdDie:(NSNumber*)num;
 
 @end

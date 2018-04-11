@@ -10,7 +10,7 @@
 
 @implementation Dice
 
-- (instancetype)initWithID:(NSInteger)dieNumber;
+- (instancetype)initWithID:(NSNumber*)dieNumber;
 {
     self = [super init];
     if (self) {

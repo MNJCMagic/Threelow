@@ -14,35 +14,25 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
 
         GameController *controller = [[GameController alloc] init];
-        BOOL play = true;
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        BOOL play = NO;
         
-        while (play) {
-            
-            char inputChars[255];
-            // char num[255];
-            printf("roll to roll\n");
-            fgets(inputChars, 255, stdin);
-            NSString *inputString = [NSString stringWithUTF8String:inputChars];
-            NSCharacterSet *space = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-            
-            NSString *input = [inputString stringByTrimmingCharactersInSet:space];
-            
-            if ([input isEqualToString:@"roll"]) {
-                
-                [controller rollDice];
-                
-            
-               
-            }
-            NSLog(@"Which die or dice would you like to hold?");
-            
-   
+        char inputChars[255];
+        printf("roll to roll\n");
+        fgets(inputChars, 255, stdin);
+        NSString *inputString = [NSString stringWithUTF8String:inputChars];
+        NSCharacterSet *space = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+        NSString *input = [inputString stringByTrimmingCharactersInSet:space];
+        
+        if([input isEqualToString:@"roll"]) {
+            play = true;
         }
-        
-    
-        
-        
+        while (play) {
+            [controller rollDice];
+            [controller askHold];
         
     }
     return 0;
+}
 }
