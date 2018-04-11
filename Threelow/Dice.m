@@ -10,11 +10,12 @@
 
 @implementation Dice
 
-- (instancetype)init
+- (instancetype)initWithID:(NSInteger)dieNumber;
 {
     self = [super init];
     if (self) {
         _value = arc4random_uniform(6) + 1;
+        _diceID = dieNumber;
     }
     return self;
 }

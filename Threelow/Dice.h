@@ -11,7 +11,9 @@
 @interface Dice : NSObject
 
 @property (nonatomic, assign) NSInteger value;
+@property (nonatomic, assign) NSInteger diceID;
 
--(void)randomizeValue;
+- (instancetype)initWithID:(NSInteger)dieNumber;
+- (void)randomizeValue;
 
 @end

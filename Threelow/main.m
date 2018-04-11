@@ -29,8 +29,13 @@ int main(int argc, const char * argv[]) {
             
             if ([input isEqualToString:@"roll"]) {
                 
+                [controller rollDice];
+                
+            
                
             }
+            NSLog(@"Which die or dice would you like to hold?");
+            
    
         }
         

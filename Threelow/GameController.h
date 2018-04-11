@@ -12,6 +12,9 @@
 @interface GameController : NSObject
 
 @property (nonatomic, strong) NSArray *dice;
-@property (nonatomic, strong) NSMutableArray *heldDice;
+@property (nonatomic, strong) NSMutableSet *heldDice;
+
+-(void)rollDice;
+-(void)holdDie;
 
 @end
