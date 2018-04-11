@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *dice;
 @property (nonatomic, strong) NSMutableSet *heldDice;
 
+-(void)resetDice;
 -(void)rollDice;
 -(void)askHold;
 -(void)holdDie:(NSNumber*)num;

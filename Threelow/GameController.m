@@ -63,19 +63,26 @@
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
     char inputChars[255];
-    NSLog(@"Which die or dice would you like to hold/unhold? Please separate by commas, or hit enter to re-roll.\n");
+    NSLog(@"Which die or dice would you like to hold/unhold? Please separate by commas, hit enter to re-roll, or type reset to un-hold all dice.\n");
     fgets(inputChars, 255, stdin);
     NSString *inputString = [NSString stringWithUTF8String:inputChars];
     NSCharacterSet *space = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSString *input = [inputString stringByTrimmingCharactersInSet:space];
-    if (input.length != 0) {
+    if ([input isEqualToString:@"reset"]) {
+       [self resetDice];
+    };
+    if (input.length != 0 && ![input isEqualToString:@"reset"]) {
         NSArray *charArray = [input componentsSeparatedByString:@","];
         for (NSString *string in charArray) {
         NSNumber *myNumber = [f numberFromString:string];
         [self holdDie:myNumber];
     }
-  
-    
 }
 }
+
+-(void)resetDice {
+    NSMutableSet *newSet = [[NSMutableSet alloc] init];
+    _heldDice = newSet;
+}
+
 @end
