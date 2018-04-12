@@ -18,5 +18,6 @@
 -(void)rollDice;
 -(void)askHold;
 -(void)holdDie:(NSNumber*)num;
+-(NSNumber*)score;
 
 @end

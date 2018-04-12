@@ -63,7 +63,7 @@
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
     char inputChars[255];
-    NSLog(@"Which die or dice would you like to hold/unhold? Please separate by commas, hit enter to re-roll, or type reset to un-hold all dice.\n");
+    NSLog(@"Your current score is %@. Which die or dice would you like to hold/unhold? Please separate by commas, hit enter to re-roll, or type reset to un-hold all dice.\n", [self score]);
     fgets(inputChars, 255, stdin);
     NSString *inputString = [NSString stringWithUTF8String:inputChars];
     NSCharacterSet *space = [NSCharacterSet whitespaceAndNewlineCharacterSet];
@@ -83,6 +83,21 @@
 -(void)resetDice {
     NSMutableSet *newSet = [[NSMutableSet alloc] init];
     _heldDice = newSet;
+}
+
+-(NSNumber*)score {
+    NSInteger currentScore = 0;
+    for (Dice *die in self.dice) {
+        if (die.value == 3) {
+            currentScore = currentScore;
+        } else {
+            currentScore = currentScore + die.value;
+        }
+        
+    }
+    NSNumber *result = [NSNumber numberWithInteger:currentScore];
+    return result;
+    
 }
 
 @end
